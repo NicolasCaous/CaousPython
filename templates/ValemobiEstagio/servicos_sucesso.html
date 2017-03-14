@@ -1,0 +1,89 @@
+<div class="container">
+      <div class="page-header text-center">
+        <h1 id="timeline">Produtos</h1>
+		<a href="vender.html"><button id="btnProc" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></a>
+      </div>
+	  
+      <ul class="timeline page-header">
+		  <?php
+			$conf = parse_ini_file("php.ini");
+
+			$servername = $conf["servername"];
+			$username = $conf["username"];
+			$password = $conf["password"];
+			$dbname = $conf["dbname"];
+
+			// Cria conexão
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			
+			// Checa conexão
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+			
+			$sql = "SELECT * FROM mercadoria ORDER BY dia_hor DESC";
+			$result = $conn->query($sql);
+			
+			if ($result->num_rows > 0) {
+				// output data of each row
+				while($row = $result->fetch_assoc()) {
+					$tempdate = new DateTime($row["dia_hor"]);
+					$tempdate = $tempdate->format("d/m/Y H:i:s");
+					if($row["tip_neg"] == "compra") {
+						echo '<li>
+								<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+								<div class="timeline-panel">
+								  <div class="timeline-heading">
+								    <h4 class="timeline-title">Comprar ' . $row["nom"] . '</h4>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' . $tempdate . '</small></p>
+								  </div>
+								  <div class="timeline-body">
+									<p>' . "Código: " . $row["cod"] . "<br>" . 
+									"Tipo mercadoria: " . $row["tip_mer"] . "<br>" . 
+									"Nome: " . $row["nom"] . "<br>" . 
+									"Quantidade: " . $row["qtd"] . "<br>" . 
+									"Preço: " . $row["pre"] . "<br>" . 
+									"Tipo Negócio: " . $row["tip_neg"] . "<br>" . 
+									"Dia e hora: " . $tempdate . '
+								  </div>
+								</div>
+							  </li>';
+					} else {
+						echo '<li class="timeline-inverted">
+								<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+								<div class="timeline-panel">
+								  <div class="timeline-heading">
+								    <h4 class="timeline-title">Vender ' . $row["nom"] . '</h4>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' . $tempdate . '</small></p>
+								  </div>
+								  <div class="timeline-body">
+									<p>' . "Código: " . $row["cod"] . "<br>" . 
+									"Tipo mercadoria: " . $row["tip_mer"] . "<br>" . 
+									"Nome: " . $row["nom"] . "<br>" . 
+									"Quantidade: " . $row["qtd"] . "<br>" . 
+									"Preço: " . $row["pre"] . "<br>" . 
+									"Tipo Negócio: " . $row["tip_neg"] . "<br>" . 
+									"Dia e hora: " . $tempdate . '
+								  </div>
+								</div>
+							  </li>';
+					}
+				}
+			} else {
+				echo "0 results";
+			}
+				
+		  ?>
+		  
+      </ul>
+
+      <footer>
+	  
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; Caous Design 2017</p>
+          </div>
+        </div>
+		
+      </footer>
+	</div>

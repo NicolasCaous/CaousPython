@@ -1,0 +1,131 @@
+
+	<div class="container">
+	
+	  <form class="page-header" name="formularioa_anuncio" method="POST" action="anunciar.php" onsubmit="return validar(this)">
+		<div class="form-group">
+		  <label for="codigo">C&#243;digo da mercadoria</label>
+		  <textarea class="form-control" id="codigo" name="codigo" rows="1" style="resize:none"></textarea>
+		</div>
+		<div class="form-group">
+		  <label for="tipo">Tipo da mercadoria</label>
+		  <textarea class="form-control" id="tipo" name="tipo" rows="1" style="resize:none"></textarea>
+		</div>
+		<div class="form-group">
+		  <label for="nome">Nome da mercadoria</label>
+		  <textarea class="form-control" id="nome" name="nome" rows="1" style="resize:none"></textarea>
+		</div>
+		<div class="form-group">
+		  <label for="quantidade">Quantidade</label>
+		  <textarea class="form-control" id="quantidade" name="quantidade" rows="1" style="resize:none"></textarea>
+		</div>
+		<div class="form-group">
+		  <label for="preco">Pre&#231;o</label>
+		  <textarea class="form-control" id="preco" name="preco" rows="1" style="resize:none"></textarea>
+		</div>
+		<fieldset class="form-group">
+		  <legend>Tipo do neg&#243;cio</legend>
+		  <div class="form-check">
+		    <label class="form-check-label">
+			  <input type="radio" class="form-check-input" name="negocio" id="compra" value="compra" checked>
+			  Compra
+		    </label>
+		  </div>
+		  <div class="form-check">
+			<label class="form-check-label">
+			  <input type="radio" class="form-check-input" name="negocio" id="venda" value="venda">
+			  Venda
+			</label>
+		  </div>
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Anunciar</button>
+	  </form>
+
+	  <script type="text/javascript">
+		function validar(frm) {
+			//Verifica se o campo codigo foi preenchido.
+			if(frm.codigo.value == "" || frm.codigo.value == null) {
+				alert("Por favor, indique o código.");
+				frm.codigo.focus();
+				return false;
+			}
+			//Verifica se o campo tipo foi preenchido.
+			if(frm.tipo.value == "" || frm.tipo.value == null) {
+				alert("Por favor, indique o tipo.");
+				frm.tipo.focus();
+				return false;
+			}
+			//Verifica se o campo nome foi preenchido.
+			if(frm.nome.value == "" || frm.nome.value == null) {
+				alert("Por favor, indique o nome.");
+				frm.nome.focus();
+				return false;
+			}
+			//Verifica se o campo quantidade foi preenchido.
+			if(frm.quantidade.value == "" || frm.quantidade.value == null) {
+				alert("Por favor, indique a quantidade.");
+				frm.quantidade.focus();
+				return false;
+			} else {
+				//Verifica se o campo quantidade possui apenas números.
+				if(!(/^\d+$/).test(String(frm.quantidade.value))) {
+					alert("Por favor, insira apenas números em quantidade.");
+					frm.quantidade.focus();
+					return false;
+				}
+			}
+			//Verifica se o campo preço foi preenchido.
+			if(frm.preco.value == "" || frm.preco.value == null) {
+				alert("Por favor, indique o preço.");
+				frm.preco.focus();
+				return false;
+			} else {
+				//Verifica se o campo preço possui apenas números reais.
+				if(frm.preco.value.indexOf(",") != -1) {
+					var res = String(frm.preco.value).split(",");
+					if(!(/^\d+$/).test(res[0]) || res.length > 2) {
+						alert("Por favor, insira apenas números em preço.");
+						frm.preco.focus();
+						return false;
+					}
+					if(!(/^\d+$/).test(res[1]) || res.length > 2) {
+						alert("Por favor, insira apenas números em preço.");
+						frm.preco.focus();
+						return false;
+					}
+				} else {
+					if(frm.preco.value.indexOf(".") != -1) {
+						var res = String(frm.preco.value).split(".");
+						if(!(/^\d+$/).test(res[0]) || res.length > 2) {
+							alert("Por favor, insira apenas números em preço.");
+							frm.preco.focus();
+							return false;
+						}
+						if(!(/^\d+$/).test(res[1]) || res.length > 2) {
+							alert("Por favor, insira apenas números em preço.");
+							frm.preco.focus();
+							return false;
+						}
+					} else {
+						if(!(/^\d+$/).test(frm.preco.value)) {
+							alert("Por favor, insira apenas números em preço.");
+							frm.preco.focus();
+							return false;
+						}
+					}
+				}
+			}
+			return true;
+		}
+	  </script>
+	  
+	  <footer>
+	  
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; Caous Design 2017</p>
+          </div>
+        </div>
+		
+      </footer>
+	  
+	</div>

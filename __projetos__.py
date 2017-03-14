@@ -1,3 +1,3 @@
 def projetos():
-	return {'Tupla':[['NameToShow','/projetos/directory/to/index/']]
+	return {'Tupla':[['Valemobi Estagio','ValemobiEstagio/index.html']]
 			}

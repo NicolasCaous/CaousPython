@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+	<meta name="description" content="Projeto para o processo seletivo na Valemobi">
+	<meta name="keywords" content="Oportunidade, Web design">
+	<meta name="author" content="Nicolas Caous Fernandes">
+	
+    <title>C&V Mercadorias</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+	<div class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+		<div class="navbar-header">
+		
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menum">
+		    <span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a href="index.html" class="navbar-brand">Valemobi</a>
+		  
+		</div>
+		<div class="navbar-collapse collapse" id="menum">
+		
+		  <ul class="nav navbar-nav">
+		    <li><a href="sobre.html">Sobre</a></li>
+			<li><a href="servicos.html">Servi&#231;os</a></li>
+		  </ul>
+		  <form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+			  <input id="entradaPesquisa" type="text" class="form-control" placeholder="Procurar..." onkeydown="document.getElementById('entradaPesquisa').onkeypress = function(e){
+																													e.preventDefault(); 
+																													if (!e) e = window.event;
+																													var keyCode = e.keyCode || e.which;
+																													if (keyCode == '13'){
+																														document.getElementById('btnProc').click();
+																													} else {
+																														document.getElementById('entradaPesquisa').value = (document.getElementById('entradaPesquisa').value).concat(String.fromCharCode(keyCode));
+																													}																												 
+																												}">
+			</div>
+			<button id="btnProc" type="button" class="btn btn-primary" OnClick="window.location = (&#34;https://www.google.com.br/#safe=off&q=site:cvmercadorias.000webhostapp.com &#34;).concat(document.getElementById('entradaPesquisa').value)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		  </form>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<br>
+	
+	<div class="container">
+	
+	  <div class="alert alert-success page-header">
+		<strong>Successo!</strong> O an&#250;ncio foi feito sem erros.
+	  </div>
+		
+      </footer>
+	  
+	</div>
+	
+	<div id="runcode"></div>
+
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+	<script>
+		$(function() {
+			$('#runcode').load("sucesso.php");
+		});
+	</script>
+  </body>
+</html>

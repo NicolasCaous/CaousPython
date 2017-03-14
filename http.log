@@ -1,0 +1,9 @@
+[14-Mar-2017 03:21:29]  127.0.0.1  GET  http  /ValemobiEstagio/index.html?  200 OK
+[14-Mar-2017 03:21:29]  127.0.0.1  GET  http  /ValemobiEstagio/img/vender.png?  200 OK
+[14-Mar-2017 03:21:34]  127.0.0.1  GET  http  /ValemobiEstagio/img/comprar.png?  200 OK
+[14-Mar-2017 03:21:39]  127.0.0.1  GET  http  /ValemobiEstagio/sobre.html?  200 OK
+[14-Mar-2017 03:21:40]  127.0.0.1  GET  http  /ValemobiEstagio/servicos.html?  200 OK
+[14-Mar-2017 03:21:44]  127.0.0.1  GET  http  /ValemobiEstagio/vender.html?  200 OK
+[14-Mar-2017 03:21:49]  127.0.0.1  GET  http  /?  200 OK
+[14-Mar-2017 03:21:53]  127.0.0.1  GET  http  /projetos/?  200 OK
+[14-Mar-2017 03:21:55]  127.0.0.1  GET  http  /projetos/ValemobiEstagio/index.html?  200 OK
